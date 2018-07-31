@@ -1,0 +1,25 @@
+.cart-content{
+  height: 130px;
+}
+
+.marked{
+  font-weight: bold;
+  color: forestgreen !important;
+}
+
+.hovered{
+    transform: scale(1.05);
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    z-index: 10;
+    transition: .4s all;
+}
+
+
+.card .card-content {
+    padding: 24px;
+    border-radius: 0 0 2px 2px;
+    min-height: 100px;
+}
+.card .card-title {
+  color: #444;
+}

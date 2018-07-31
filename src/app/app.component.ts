@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import {UsersService} from './users.service';
+import {ClientService} from './client-next.service';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    providers: [UsersService, ClientService]
 })
 export class AppComponent {
-  title = 'app';
+
 }
