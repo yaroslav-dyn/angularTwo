@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/*purple them */
+$purple-color: #bb4c7e;
+$black-color: #444;
+$invert-white: #f6f6f6;
+
+html, body {
+    height: 100%;
+}
+
+.purpleTheme {
+    nav {
+        background-color: $purple-color;
+    }
+    .btn {
+        background-color: $purple-color;
+    }
+
+}
+
+.blackTheme {
+    nav {
+        background-color:  $invert-white;
+        color: $black-color;
+        a {
+            color: $black-color;
+        }
+    }
+    .btn {
+        background-color: $black-color;
+    }
+    &#app-wrapper {
+        background-color: $black-color;
+        min-height: 100%;
+    }
+}
+
