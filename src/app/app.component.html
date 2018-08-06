@@ -1,15 +1,61 @@
-<nav>
-  <div class="nav-wrapper">
-    <a href="/" class="brand-logo">App</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a routerLink="/">Main</a></li>
-        <li><a routerLink="/setup">Settings</a></li>
-      </ul>
-  </div>
-</nav>
+<div class="app-wrapper" class="{{currentTheme}}">
 
-<div class="container">
 
-  <router-outlet></router-outlet>
 
+    <!--<nav>-->
+        <!--<div class="nav-wrapper">-->
+            <!--<div class="nav-container"><a href="/" class="brand-logo">App</a>-->
+
+
+
+                <!--<ul id="nav-mobile" class="right hide-on-med-and-down">-->
+                    <!--<li><a routerLink="/">Main</a></li>-->
+                    <!--<li><a routerLink="/settings">Settings</a></li>-->
+                    <!--<li>-->
+                        <!--<a class='dropdown-trigger btn' href='#' data-target='color-scheme'>Drop Me!</a>-->
+                        <!--&lt;!&ndash; Dropdown Structure &ndash;&gt;-->
+                        <!--<ul id='color-scheme' class='dropdown-content'>-->
+                            <!--<li><a href="#!">one</a></li>-->
+                            <!--<li><a href="#!">two</a></li>-->
+                            <!--<li class="divider" tabindex="-1"></li>-->
+                            <!--<li><a href="#!">three</a></li>-->
+                            <!--<li><a href="#!"><i class="material-icons">view_module</i>four</a></li>-->
+                            <!--<li><a href="#!"><i class="material-icons">cloud</i>five</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</nav>-->
+
+
+
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">three</a></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+
+        <router-outlet></router-outlet>
+
+    </div>
 </div>
+
+

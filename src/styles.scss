@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*purple them */
+$purple-color: #bb4c7e;
+
+
+
+.purple-them {
+    nav {
+        background-color: $purple-color;
+    }
+    .btn {
+        background-color: $purple-color;
+    }
+
+}
