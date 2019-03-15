@@ -1,4 +1,12 @@
-<div class="col s3">
+<div class="row">
+    <div class="input-field col s6">
+        <input id="search-name" type="text" class="validate" [(ngModel)]="searchStr">
+        <label class="active" for="search-name">Search Name</label>
+    </div>
+</div>
+
+
+<div class="col s3" *ngFor="let user of users | search:searchStr; let i = index">
     <div class="card" appHover>
         <div class="card-image">
             <img style="min-height: 100px">
@@ -11,7 +19,8 @@
             </p>
         </div>
         <div class="card-action">
-          <a class="waves-effect waves-light btn" (click)="onClickCart()">Sign</a>
+          <a class="waves-effect waves-light btn" [routerLink]="['/personal', i]">Sign</a>
+            <!--(click)="onClickCart()-->
         </div>
     </div>
 </div>

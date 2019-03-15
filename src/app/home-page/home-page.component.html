@@ -1,14 +1,6 @@
-<div class="row">
-  <div class="input-field col s6">
-    <input id="search-name" type="text" class="validate" [(ngModel)]="searchStr">
-    <label class="active" for="search-name">Search Name</label>
-  </div>
-</div>
-
-
 
 <div class="row">
-  <app-user *ngFor="let userEl of users | search:searchStr" [user]="userEl"></app-user>
+  <app-user></app-user>
 </div>
 
 

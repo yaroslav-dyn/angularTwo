@@ -12,23 +12,29 @@ import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { SettingsComponent } from './settings/settings.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { PersonalComponent } from './personal/personal.component';
+import {userIdPipe} from './usersId.pipe';
+import {SettingsService} from "./settings.service";
 
 
 
 const routes = [
   {path: '', component: HomePageComponent},
   {path: 'settings', component: SettingsComponent},
+  {path: 'personal/:id', component: PersonalComponent}
 ];
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UserComponent,
-    HoverDirective,
-    SearchPipe,
-    HomePageComponent,
-    SettingsComponent
+      AppComponent,
+      UserComponent,
+      HoverDirective,
+      SearchPipe,
+      userIdPipe,
+      HomePageComponent,
+      SettingsComponent,
+      PersonalComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +43,9 @@ const routes = [
     RouterModule.forRoot(routes),
     BrowserAnimationsModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    SettingsService
+  ]
 })
 export class AppModule { }

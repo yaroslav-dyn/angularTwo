@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {UsersService} from '../users.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,13 +7,22 @@ import {UsersService} from '../users.service';
 })
 export class HomePageComponent implements OnInit {
 
-  users = [];
-  searchStr = '';
-  constructor(private usersService: UsersService) {}
+
+
+
+  constructor() {}
   ngOnInit() {
-      this.usersService.getUser().subscribe(users => {
-          this.users = users;
-      });
+
+    interface UserObj { name: string; secondName: string; nickName?: string; }
+
+    let userObj: UserObj = {
+      name: 'User',
+      secondName: 'Super',
+      nickName: 'superUser'
+    };
+
+
+   console.log(userObj);
   }
 }
 

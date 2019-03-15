@@ -1,0 +1,42 @@
+<!--<div class="row">-->
+  <!--<div class="col s8 center">-->
+    <!--<div class="card" appHover>-->
+      <!--<div class="card-image">-->
+        <!--<img style="min-height: 100px; max-height: 300px" src="">-->
+        <!--<span class="card-title" [ngClass]="{'marked': isMarked }">{{users[currIdFinal].name}}</span>-->
+      <!--</div>-->
+      <!--<div class="card-content">-->
+        <!--<p>-->
+          <!--{{users[currIdFinal].geo}}-->
+        <!--</p>-->
+      <!--</div>-->
+      <!--<div class="card-action">-->
+        <!--<a class="waves-effect waves-light btn">Sign</a>-->
+        <!--&lt;!&ndash;(click)="onClickCart()&ndash;&gt;-->
+      <!--</div>-->
+    <!--</div>-->
+
+  <!--</div>-->
+<!--</div>-->
+
+
+<div class="row">
+  <div class="col s12 m6 offset-m3" *ngFor="let user of users; let i = index">
+    <div class="card" appHover *ngIf="i===currIdFinal" >
+      <div class="card-image">
+          <img style="min-height: 100px; max-height: 300px; padding: 30px 20%;" src="{{user.img}}">
+      </div>
+      <div class="card-content">
+        <div class="card-title" [ngClass]="{'marked': isMarked }">{{user.name}}</div>
+        <p>
+          {{user.geo}}
+        </p>
+      </div>
+      <div class="card-action">
+        <a class="waves-effect waves-light btn">Sign</a>
+        <!--(click)="onClickCart()-->
+      </div>
+    </div>
+
+  </div>
+</div>

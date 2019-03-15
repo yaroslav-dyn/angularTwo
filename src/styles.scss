@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /*purple them */
 $purple-color: #bb4c7e;
@@ -9,6 +9,14 @@ $invert-white: #f6f6f6;
 
 html, body {
     height: 100%;
+}
+
+.theme-trigger-container {
+  padding: 9px 0;
+}
+select[name=theme-trigger-nav] {
+  background-color: transparent;
+  color: #444;
 }
 
 .purpleTheme {
@@ -22,6 +30,9 @@ html, body {
 }
 
 .blackTheme {
+  * {
+    color: #fff;
+  }
     nav {
         background-color:  $invert-white;
         color: $black-color;
@@ -35,6 +46,12 @@ html, body {
     &#app-wrapper {
         background-color: $black-color;
         min-height: 100%;
+    }
+    .card .card-image .card-title{
+        color: $black-color;
+    }
+    .input-field {
+      color: #fff;
     }
 }
 

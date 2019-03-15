@@ -1,37 +1,27 @@
-<div id="app-wrapper" class="{{currentTheme}}">
+<div id="app-wrapper"  [ngClass]="currentTheme">
     <nav>
         <div class="nav-wrapper">
             <div class="nav-container">
-                <a href="/" class="brand-logo">App</a>
+                <a routerLink="/" class="brand-logo">App</a>
 
-                <ul id="nav-mobile" class="right ">
-
-                    <li>
-
-                    </li>
-
+                <ul id="nav-mobile" class="right">
                     <li><a routerLink="/">Main</a></li>
                     <li><a routerLink="/settings">Settings</a></li>
+                    <li *ngIf="showTheme || showTheme === 'true'; else otherSwitch">
+                        <div class="theme-trigger-container">
+                            <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav" [(ngModel)]="currentTheme" (ngModelChange)="setTheme($event)">
+                                <option value="" disabled selected>Choose your theme</option>
+                                <option value="defaultTheme">Default</option>
+                                <option value="purpleTheme">Purple</option>
+                                <option value="blackTheme">Black</option>
+                            </select>
+                        </div>
+                    </li>
+                  <ng-template #otherSwitch><li>Color scheme has been turned off</li></ng-template>
                 </ul>
             </div>
         </div>
     </nav>
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col s8">
-                <select class="browser-default" name="theme-trigger" id="theme-trigger"
-                        [(ngModel)]="currentTheme" (ngModelChange)="setTheme($event)">
-                    <option value="" disabled selected>Choose your theme</option>
-                    <option value="defaultTheme">Default</option>
-                    <option value="purpleTheme">Purple</option>
-                    <option value="blackTheme">Black</option>
-                </select>
-            </div>
-        </div>
-
-    </div>
 
     <div class="container">
 
