@@ -2,12 +2,12 @@
     <nav>
         <div class="nav-wrapper">
             <div class="nav-container">
-                <a routerLink="/" class="brand-logo">App</a>
+                <a routerLink="/" class="brand-logo">{{project.name}}</a>
 
                 <ul id="nav-mobile" class="right">
                     <li><a routerLink="/">Main</a></li>
                     <li><a routerLink="/settings">Settings</a></li>
-                    <li *ngIf="showTheme || showTheme === 'true'; else otherSwitch">
+                    <li *ngIf="showTheme; else otherSwitch">
                         <div class="theme-trigger-container">
                             <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav" [(ngModel)]="currentTheme" (ngModelChange)="setTheme($event)">
                                 <option value="" disabled selected>Choose your theme</option>
@@ -17,7 +17,7 @@
                             </select>
                         </div>
                     </li>
-                  <ng-template #otherSwitch><li>Color scheme has been turned off</li></ng-template>
+                  <ng-template #otherSwitch><li></li></ng-template>
                 </ul>
             </div>
         </div>

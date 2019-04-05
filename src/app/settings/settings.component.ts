@@ -20,17 +20,19 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
 
+    this.themeView = JSON.parse(localStorage.getItem('themeState'));
+    this.usersService.setSize(this.countUsers);
     this.countUsers = this.usersService.size;
     this.tabView = 'First';
 
-    this.settingsService.myData.next(this.themeView);
   }
 
   onChNumbersUsers() {
     this.usersService.setSize(this.countUsers);
   }
 
-  outputMethodSettings() {
+  outputMethodSettings(e) {
+    this.themeView = e.target.checked;
     this.settingsService.myData.next(this.themeView);
     if (localStorage) {
       localStorage.setItem('themeState', this.themeView.toString() );

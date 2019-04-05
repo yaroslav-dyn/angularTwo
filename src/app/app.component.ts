@@ -6,11 +6,12 @@ import {SettingsService} from "./settings.service";
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    providers: [UsersService]
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+    project  = {
+      name: 'Bboxes'
+    };
     currentTheme: string;
     defaultTheme = 'defaultTheme';
     showTheme: boolean | string;
@@ -22,24 +23,17 @@ export class AppComponent implements OnInit {
 
         this.currentTheme = this.defaultTheme;
 
-        if (localStorage ) {
 
-         let storageThemeState =  localStorage.getItem('themeState');
-
-          if (storageThemeState) {
-            this.showTheme = storageThemeState;
-          }
-          else {
-            this.settingsService.myData.subscribe(colorTheme => {
-              this.showTheme = colorTheme;
-            });
-          }
-
-          this.currentTheme = localStorage.getItem('currentTheme');
-        }
         this.settingsService.myData.subscribe(colorTheme => {
           this.showTheme = colorTheme;
         });
+
+      if ( localStorage ) {
+        const storageThemeVal = JSON.parse(localStorage.getItem('themeState'));
+        if ( storageThemeVal ) { this.showTheme = storageThemeVal; }
+        this.currentTheme = localStorage.getItem('currentTheme');
+      }
+
 
     }
 
@@ -51,4 +45,6 @@ export class AppComponent implements OnInit {
     }
 
 }
+
+
 

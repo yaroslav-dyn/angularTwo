@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UsersService} from "../users.service";
 
 @Component({
@@ -7,7 +7,7 @@ import {UsersService} from "../users.service";
   styleUrls: ['./user.component.scss']
 })
 
-export class UserComponent {
+export class UserComponent implements OnInit {
 
     users = [];
     searchStr = '';
@@ -19,11 +19,10 @@ export class UserComponent {
         this.usersService.getUser().subscribe(users => {
             this.users = users;
         });
-
-
     }
 
   onClickCart() {
       this.isMarked = !this.isMarked;
   }
 }
+

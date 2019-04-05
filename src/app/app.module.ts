@@ -15,6 +15,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PersonalComponent } from './personal/personal.component';
 import {userIdPipe} from './usersId.pipe';
 import {SettingsService} from "./settings.service";
+import { SettingsUserComponent } from './settings-user/settings-user.component';
+import {UsersService} from "./users.service";
 
 
 
@@ -34,7 +36,8 @@ const routes = [
       userIdPipe,
       HomePageComponent,
       SettingsComponent,
-      PersonalComponent
+      PersonalComponent,
+      SettingsUserComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ const routes = [
   ],
   bootstrap: [AppComponent],
   providers: [
-    SettingsService
+    SettingsService, UsersService
   ]
 })
 export class AppModule { }

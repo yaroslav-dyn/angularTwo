@@ -16,7 +16,7 @@ html, body {
 }
 select[name=theme-trigger-nav] {
   background-color: transparent;
-  color: #444;
+  color: #fff;
 }
 
 .purpleTheme {
@@ -53,5 +53,8 @@ select[name=theme-trigger-nav] {
     .input-field {
       color: #fff;
     }
+  select[name=theme-trigger-nav] {
+    color: #444;
+  }
 }
 

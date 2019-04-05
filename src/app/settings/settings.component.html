@@ -14,10 +14,9 @@
 
 <section class="set-section">
     <p>
-      <input type="checkbox" name="trigger-theme" class="" [(ngModel)]="themeView"  (change)="outputMethodSettings();"  id="trigger-theme"/>
+      <input type="checkbox" name="trigger-theme" class=""  [checked]="themeView" (change)="outputMethodSettings($event);"  id="trigger-theme"/>
       <label for="trigger-theme">Color theme in header</label>
     </p>
-
 </section>
 
 
@@ -40,7 +39,9 @@
     <div class="row">
       <div class="col s12">
         <div class="tabs-view" [ngSwitch]="tabView">
-          <div *ngSwitchCase="'First'">First content</div>
+          <div *ngSwitchCase="'First'">First content
+            <span [textContent]="countUsers"></span>
+          </div>
           <div *ngSwitchCase="'Second'">Second content</div>
           <div *ngSwitchCase="'Third'">Third content</div>
           <div *ngSwitchDefault>Choose</div>
@@ -50,5 +51,11 @@
     </div>
 
   </div>
+</section>
+
+
+<section>
+  <app-settings-user #childSettingsComponent></app-settings-user>
+  <button class="waves-effect waves-light btn-small btn" (click)="childSettingsComponent.checkChild()">Method from child</button>
 </section>
 
