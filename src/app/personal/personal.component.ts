@@ -18,7 +18,6 @@ export class PersonalComponent implements OnInit {
     ngOnInit() {
         this.usersService.getUser().subscribe(users => {
             this.users = users;
-            console.log(users);
         });
         this.currIdFinal = parseFloat(this.currId.id);
 

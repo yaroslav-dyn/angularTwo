@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col s12 l6 offset-l3">
+    <form name="sign-in" #signInForm = "ngForm" novalidate (ngSubmit)="onFormSubmit(signInForm)" >
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate" name="email"  [ngModel]="user.email"  #email = "ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+          <label for="email">Email</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" minlength="6" name="pwd" [ngModel]="" #userPassword = 'ngModel'
+                 ngModel required>
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col s12 m6 left-align">
+          <a class="btn waves-effect waves-light btn-mobile-large" routerLink="/signUp">
+            Sign Up
+          </a>
+        </div>
+        <div class="col s12 m6 right-align">
+          <button class="btn waves-effect waves-light btn-mobile-large" [disabled]="!signInForm.form.valid" type="submit">
+            Login
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!--  Errors messages-->
+    <div class="row">
+      <div class="col s12 validate-errors">
+
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
+          <div class="card-panel red lighten-1 white-text" *ngIf = "email.errors?.required">
+            {{constantList.messages['emailCantBeBlank']}}
+          </div>
+          <div class="card-panel red lighten-1 white-text" *ngIf = "email.errors?.pattern && email.touched">
+            {{constantList.messages['wrongEmailPattern']}}
+          </div>
+        </div>
+
+        <div *ngIf="(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)">
+
+          <div class="card-panel red lighten-1 white-text" *ngIf = "userPassword.invalid;">
+            {{constantList.messages['passwordLengthError']}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modals -->
+<div id="termsModal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <button class="modal-close waves-effect waves-green btn-flat" (click)="user.terms = false">Disagree</button>
+    <button class="modal-close waves-effect waves-green btn-flat" (click)="user.terms = true">Agree</button>
+  </div>
+</div>
+
