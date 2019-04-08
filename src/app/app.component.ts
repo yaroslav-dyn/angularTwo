@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UsersService} from './users.service';
-import {SettingsService} from "./settings.service";
+import {SettingsService} from './settings.service';
+import {ConstantList} from './constants';0
 
 
 @Component({
@@ -9,17 +10,19 @@ import {SettingsService} from "./settings.service";
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    project  = {
-      name: 'Bboxes'
-    };
+
     currentTheme: string;
     defaultTheme = 'defaultTheme';
     showTheme: boolean | string;
 
 
-    constructor(private settingsService: SettingsService) { }
+
+    constructor(private settingsService: SettingsService, private constantList: ConstantList) { }
 
     ngOnInit() {
+
+
+      console.log(this.constantList.project);
 
         this.currentTheme = this.defaultTheme;
 
@@ -34,7 +37,8 @@ export class AppComponent implements OnInit {
         this.currentTheme = localStorage.getItem('currentTheme');
       }
 
-
+      let elems = document.querySelectorAll('.sidenav');
+      let instances = M.Sidenav.init(elems);
     }
 
     setTheme(e) {
@@ -43,6 +47,7 @@ export class AppComponent implements OnInit {
             localStorage.setItem('currentTheme', this.currentTheme);
         }
     }
+
 
 }
 

@@ -17,13 +17,18 @@ import {userIdPipe} from './usersId.pipe';
 import {SettingsService} from "./settings.service";
 import { SettingsUserComponent } from './settings-user/settings-user.component';
 import {UsersService} from "./users.service";
+import { RegistrationComponent } from './registration/registration.component';
+import {ConstantList} from './constants';
+import { LoginComponent } from './login/login.component';
 
 
 
 const routes = [
   {path: '', component: HomePageComponent},
   {path: 'settings', component: SettingsComponent},
-  {path: 'personal/:id', component: PersonalComponent}
+  {path: 'personal/:id', component: PersonalComponent},
+  {path: 'signIn', component: LoginComponent},
+  {path: 'signUp', component: RegistrationComponent}
 ];
 
 
@@ -37,7 +42,9 @@ const routes = [
       HomePageComponent,
       SettingsComponent,
       PersonalComponent,
-      SettingsUserComponent
+      SettingsUserComponent,
+      RegistrationComponent,
+      LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,7 @@ const routes = [
   ],
   bootstrap: [AppComponent],
   providers: [
-    SettingsService, UsersService
+    SettingsService, UsersService, ConstantList
   ]
 })
 export class AppModule { }
