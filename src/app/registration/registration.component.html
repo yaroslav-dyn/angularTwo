@@ -23,10 +23,10 @@
       </div>
 
       <div class="row">
-        <div class="input-field col s12 right-align">
+        <div class=" col s12">
           <label>
-            <input id="terms" type="checkbox" name="terms" [(ngModel)]="user.terms"  [checked]="user.terms" required>
-            <span> I have reed and understood Bbox's <a class="modal-trigger" href="#termsModal">Terms and conditionals</a></span>
+            <input id="terms" type="checkbox" name="terms" [(ngModel)]="user.terms"   required>
+            <span>I have reed and understood {{constantList.project.name}}'s <a (click)="termsModal.openModal()">Terms and conditions</a></span>
           </label>
         </div>
       </div>
@@ -75,14 +75,31 @@
 
 
 <!-- Modals -->
-<div id="termsModal" class="modal modal-fixed-footer">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <button class="modal-close waves-effect waves-green btn-flat" (click)="user.terms = false">Disagree</button>
-    <button class="modal-close waves-effect waves-green btn-flat" (click)="user.terms = true">Agree</button>
-  </div>
-</div>
+<!--<div id="termsModal" class="modal modal-fixed-footer">-->
+<!--  <div class="modal-content">-->
+<!--    <h4>Modal Header</h4>-->
+<!--    <p>A bunch of text</p>-->
+<!--  </div>-->
+<!--  <div class="modal-footer">-->
+<!--    <button class="modal-close waves-effect waves-green btn-flat" (click)="user.terms = false">Disagree</button>-->
+<!--    <button class="modal-close waves-effect waves-green btn-flat" (click)="user.terms = true">Agree</button>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+
+<mz-modal #termsModal [fixedFooter]="true"  [options]="modalOptions">
+  <mz-modal-header>
+    <h4>{{constantList.project.name}}'s Terms and conditions</h4>
+  </mz-modal-header>
+  <mz-modal-content>
+      <app-terms></app-terms>
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close (click)="user.terms = false">Disagree</button>
+    <button mz-button [flat]="true" mz-modal-close (click)="user.terms = true">Agree</button>
+  </mz-modal-footer>
+</mz-modal>
+
 

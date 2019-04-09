@@ -1,47 +1,78 @@
 <div id="app-wrapper"  [ngClass]="currentTheme">
+    <nav class="nav-wrapper">
+        <div class="nav-container">
+            <a routerLink="/" class="brand-logo">{{constantList.project.name}}</a>
+            <a href="#" id="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-        <nav class="nav-wrapper">
-            <div class="nav-container">
-                <a routerLink="/" class="brand-logo">{{constantList.project.name}}</a>
-                <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a routerLink="/">Main</a></li>
-                    <li><a routerLink="/settings">Settings</a></li>
-                   <li><a routerLink="/signIn">Login</a></li>
-                    <li *ngIf="showTheme; else otherSwitch">
-                        <div class="theme-trigger-container">
-                            <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav" [(ngModel)]="currentTheme" (ngModelChange)="setTheme($event)">
-                                <option value="" disabled selected>Choose your theme</option>
-                                <option value="defaultTheme">Default</option>
-                                <option value="purpleTheme">Purple</option>
-                                <option value="blackTheme">Black</option>
-                            </select>
-                        </div>
-                    </li>
-                  <ng-template #otherSwitch><li></li></ng-template>
-                </ul>
-            </div>
-        </nav>
-
-
-    <ul id="mobile-menu" class="sidenav">
-      <a routerLink="/" class="brand-logo">{{constantList.project.name}}</a>
-      <li><a routerLink="/">Main</a></li>
-      <li><a routerLink="/settings">Settings</a></li>
-      <li><a routerLink="/signUp">Registration</a></li>
-      <li *ngIf="showTheme; else otherSwitch">
-        <div class="theme-trigger-container">
-          <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav-mob" [(ngModel)]="currentTheme" (ngModelChange)="setTheme($event)">
-            <option value="" disabled selected>Choose your theme</option>
-            <option value="defaultTheme">Default</option>
-            <option value="purpleTheme">Purple</option>
-            <option value="blackTheme">Black</option>
-          </select>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a routerLink="/signIn">Login</a></li>
+                <li><a routerLink="/">Main</a></li>
+                <li><a routerLink="/settings">Settings</a></li>
+                <li *ngIf="showTheme; else otherSwitch">
+                    <div class="theme-trigger-container">
+                        <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav" [(ngModel)]="currentTheme" (ngModelChange)="setTheme($event)">
+                            <option value="" disabled selected>Choose your theme</option>
+                            <option value="defaultTheme">Default</option>
+                            <option value="purpleTheme">Purple</option>
+                            <option value="blackTheme">Black</option>
+                        </select>
+                    </div>
+                </li>
+              <ng-template #otherSwitch><li></li></ng-template>
+            </ul>
         </div>
-      </li>
-      <ng-template #otherSwitch><li></li></ng-template>
-    </ul>
+    </nav>
+
+
+
+
+  <mz-sidenav
+    [id]="'mobile-menu-demo-content'"
+    [collapseButtonId]="'mobile-menu'">
+    <mz-sidenav-header>
+      <a routerLink="/" class="brand-logo">{{constantList.project.name}}</a>
+    </mz-sidenav-header>
+    <mz-sidenav-link>
+      <a routerLink="/signUp">Registration</a>
+    </mz-sidenav-link>
+    <mz-sidenav-divider></mz-sidenav-divider>
+    <mz-sidenav-link>
+      <a routerLink="/settings">Settings</a>
+    </mz-sidenav-link>
+    <mz-sidenav-link>
+      <div class="theme-trigger-container" *ngIf="showTheme">
+        <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav-mob" [(ngModel)]="currentTheme"
+                (ngModelChange)="setTheme($event)">
+          <option value="" disabled selected>Choose your theme</option>
+          <option value="defaultTheme">Default</option>
+          <option value="purpleTheme">Purple</option>
+          <option value="blackTheme">Black</option>
+        </select>
+      </div>
+    </mz-sidenav-link>
+  </mz-sidenav>
+
+
+
+
+
+<!--    <ul id="mobile-menu" class="sidenav">-->
+<!--      <a routerLink="/" class="brand-logo">{{constantList.project.name}}</a>-->
+<!--      <li><a routerLink="/">Main</a></li>-->
+<!--      <li><a routerLink="/settings">Settings</a></li>-->
+<!--      <li><a routerLink="/signUp">Registration</a></li>-->
+<!--      <li *ngIf="showTheme; else otherSwitch">-->
+<!--        <div class="theme-trigger-container">-->
+<!--          <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav-mob" [(ngModel)]="currentTheme" (ngModelChange)="setTheme($event)">-->
+<!--            <option value="" disabled selected>Choose your theme</option>-->
+<!--            <option value="defaultTheme">Default</option>-->
+<!--            <option value="purpleTheme">Purple</option>-->
+<!--            <option value="blackTheme">Black</option>-->
+<!--          </select>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--      <ng-template #otherSwitch><li></li></ng-template>-->
+<!--    </ul>-->
 
 
   <div class="container">

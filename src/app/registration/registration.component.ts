@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import {UserModel} from './User.model';
 import {ConstantList} from '../constants';
-
+import {RegisterService} from "../services/register.service";
 
 @Component({
   selector: 'app-registration',
@@ -12,9 +11,14 @@ import {ConstantList} from '../constants';
 export class RegistrationComponent implements OnInit {
 
   private user: UserModel;
+    users = [];
+    regUser = {
+      password: '',
+      email: ''
+    };
 
+  constructor(private constantList: ConstantList, private registerService: RegisterService ) {
 
-  constructor(private constantList: ConstantList) {
   }
 
   ngOnInit() {
@@ -23,18 +27,21 @@ export class RegistrationComponent implements OnInit {
       terms: false
     });
 
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
 
   }
 
 
   public onFormSubmit({ value, valid}: { value: UserModel, valid: boolean }) {
-    this.user = value;
-    console.log( this.user);
-    console.log("valid: " + valid);
+    this.regUser.email = value.email;
+    this.regUser.password  = value.password.pwd;
+
+
+    console.log( this.regUser);
+
+    this.registerService.registerUser(this.regUser).subscribe((res) => {
+        console.log('create customer', res);
+      });
+
   }
-
-
 
 }

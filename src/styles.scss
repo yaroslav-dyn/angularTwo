@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
-/*purple them */
+$default-color: #ee6e73;
 $purple-color: #bb4c7e;
 $black-color: #444;
 $invert-white: #f6f6f6;
@@ -18,20 +16,37 @@ select[name=theme-trigger-nav] {
   background-color: transparent;
   color: #fff;
 }
-
+.side-nav {
+  .sidenav-header {
+    background: $default-color;
+  }
+}
 .purpleTheme {
-    nav {
-        background-color: $purple-color;
+  nav {
+    background-color: $purple-color;
+  }
+
+  .btn {
+    background-color: $purple-color;
+  }
+
+  .side-nav {
+    .sidenav-header {
+      background: $purple-color;
+
+      .brand-logo {
+      }
     }
-    .btn {
-        background-color: $purple-color;
-    }
+  }
 
 }
 
 .blackTheme {
   * {
-    color: #fff;
+      color: #fff;
+  }
+  a {
+    color: #039be5;
   }
     nav {
         background-color:  $invert-white;
@@ -54,7 +69,27 @@ select[name=theme-trigger-nav] {
       color: #fff;
     }
   select[name=theme-trigger-nav] {
-    color: #444;
+    color: $black-color;
+  }
+  .sidenav-trigger {
+    i {
+      color: #444;
+    }
+  }
+  .side-nav {
+    .sidenav-header {
+      background: $black-color;
+      .brand-logo {
+        color: $invert-white;
+      }
+    }
+  }
+  .modal {
+    background-color: $black-color;
+    .modal-footer {
+      background-color: $invert-white;
+      color: $black-color;
+    }
   }
 }
 

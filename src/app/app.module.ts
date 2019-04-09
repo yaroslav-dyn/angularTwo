@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { HoverDirective } from './hover.directive';
@@ -14,13 +12,15 @@ import { SettingsComponent } from './settings/settings.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PersonalComponent } from './personal/personal.component';
 import {userIdPipe} from './usersId.pipe';
-import {SettingsService} from "./settings.service";
+import {SettingsService} from './settings.service';
 import { SettingsUserComponent } from './settings-user/settings-user.component';
-import {UsersService} from "./users.service";
+import {UsersService} from './users.service';
 import { RegistrationComponent } from './registration/registration.component';
 import {ConstantList} from './constants';
 import { LoginComponent } from './login/login.component';
-
+import { MatterModule } from './materialaze.module';
+import { TermsComponent } from './content-components/terms/terms.component';
+import { RegisterService } from './services/register.service';
 
 
 const routes = [
@@ -44,18 +44,20 @@ const routes = [
       PersonalComponent,
       SettingsUserComponent,
       RegistrationComponent,
-      LoginComponent
+      LoginComponent,
+      TermsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatterModule,
   ],
   bootstrap: [AppComponent],
   providers: [
-    SettingsService, UsersService, ConstantList
+    SettingsService, UsersService, ConstantList, RegisterService
   ]
 })
 export class AppModule { }
