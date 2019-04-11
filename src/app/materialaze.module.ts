@@ -1,6 +1,13 @@
 import {NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MzButtonModule, MzInputModule, MzModalModule, MzCheckboxModule, MzSidenavModule } from 'ngx-materialize';
+import {
+  MzButtonModule,
+  MzInputModule,
+  MzModalModule,
+  MzCheckboxModule,
+  MzSidenavModule,
+  MzToastModule
+} from 'ngx-materialize';
 
 
 @NgModule({
@@ -10,14 +17,16 @@ import { MzButtonModule, MzInputModule, MzModalModule, MzCheckboxModule, MzSiden
     MzInputModule,
     MzModalModule,
     MzCheckboxModule,
-    MzSidenavModule
+    MzSidenavModule,
+    MzToastModule
   ],
   exports: [
     MzButtonModule,
     MzInputModule,
     MzModalModule,
     MzCheckboxModule,
-    MzSidenavModule
+    MzSidenavModule,
+    MzToastModule
   ]
 })
 export class MatterModule { }

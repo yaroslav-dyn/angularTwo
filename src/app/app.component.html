@@ -5,9 +5,9 @@
             <a href="#" id="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a routerLink="/signIn">Login</a></li>
-                <li><a routerLink="/">Main</a></li>
-                <li><a routerLink="/settings">Settings</a></li>
+                <li *ngIf="!loginUser" routerLinkActive="active"><a routerLink="/signIn">Login</a></li>
+                <li *ngIf="loginUser" routerLinkActive="active"><a routerLink="/settings">Settings</a></li>
+                <li *ngIf="loginUser" routerLinkActive="active"><a (click)="loggedOut()">Logout</a></li>
                 <li *ngIf="showTheme; else otherSwitch">
                     <div class="theme-trigger-container">
                         <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav" [(ngModel)]="currentTheme" (ngModelChange)="setTheme($event)">
@@ -22,9 +22,6 @@
             </ul>
         </div>
     </nav>
-
-
-
 
   <mz-sidenav
     [id]="'mobile-menu-demo-content'"

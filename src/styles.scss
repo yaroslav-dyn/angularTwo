@@ -15,12 +15,30 @@ html, body {
 select[name=theme-trigger-nav] {
   background-color: transparent;
   color: #fff;
+  @media(min-width: 992px){
+    margin-left: 20px;
+  }
+
 }
 .side-nav {
   .sidenav-header {
     background: $default-color;
   }
 }
+
+//toasts
+#toast-container {
+  .bb-toast {
+    &.success {
+      background-color: #26b770;
+    }
+    &.error {
+      background-color: #EF5350;
+    }
+  }
+}
+
+
 .purpleTheme {
   nav {
     background-color: $purple-color;
@@ -56,7 +74,7 @@ select[name=theme-trigger-nav] {
         }
     }
     .btn {
-        background-color: $black-color;
+        background-color: #676767;
     }
     &#app-wrapper {
         background-color: $black-color;
@@ -91,9 +109,14 @@ select[name=theme-trigger-nav] {
       color: $black-color;
     }
   }
+
 }
 
 .btn-mobile-large {
   width: 100%;
   margin-bottom: 15px;
+}
+
+.not-found-page ~ .row {
+  background-color: #ee6e73;
 }

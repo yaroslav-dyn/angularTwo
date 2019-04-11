@@ -12,7 +12,7 @@ import { SettingsComponent } from './settings/settings.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PersonalComponent } from './personal/personal.component';
 import {userIdPipe} from './usersId.pipe';
-import {SettingsService} from './settings.service';
+import {SettingsService} from './services/settings.service';
 import { SettingsUserComponent } from './settings-user/settings-user.component';
 import {UsersService} from './users.service';
 import { RegistrationComponent } from './registration/registration.component';
@@ -21,14 +21,25 @@ import { LoginComponent } from './login/login.component';
 import { MatterModule } from './materialaze.module';
 import { TermsComponent } from './content-components/terms/terms.component';
 import { RegisterService } from './services/register.service';
+import { RegistrationCompleteComponent } from './registration-complete/registration-complete.component';
+import {LoginService} from './services/login.service';
+import {LoginGuard} from './services/loginGuard.service';
+import { NotFoundComponent } from './content-components/not-found/not-found.component';
+import {LoggedState} from './services/loggedUser';
 
 
 const routes = [
-  {path: '', component: HomePageComponent},
-  {path: 'settings', component: SettingsComponent},
+  {path: '',  component: HomePageComponent},
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [LoginGuard]
+  },
   {path: 'personal/:id', component: PersonalComponent},
   {path: 'signIn', component: LoginComponent},
-  {path: 'signUp', component: RegistrationComponent}
+  {path: 'signUp', component: RegistrationComponent},
+  {path: 'signUp/thanks', component: RegistrationCompleteComponent},
+  {path: '**', component: NotFoundComponent}
 ];
 
 
@@ -45,7 +56,9 @@ const routes = [
       SettingsUserComponent,
       RegistrationComponent,
       LoginComponent,
-      TermsComponent
+      TermsComponent,
+      RegistrationCompleteComponent,
+      NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +70,8 @@ const routes = [
   ],
   bootstrap: [AppComponent],
   providers: [
-    SettingsService, UsersService, ConstantList, RegisterService
+    SettingsService, UsersService, ConstantList, RegisterService, LoginService,
+    LoginGuard, LoggedState
   ]
 })
 export class AppModule { }

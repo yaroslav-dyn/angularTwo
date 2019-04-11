@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {UserModel} from '../registration/User.model';
-import {ConstantList} from "../constants";
-
+import {ConstantList} from '../constants';
+import {LoginService} from '../services/login.service';
+import { Router } from '@angular/router';
+import {LoggedState} from '../services/loggedUser';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +11,21 @@ import {ConstantList} from "../constants";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  route: any;
 
   private user: UserModel;
 
-  constructor(private constantList: ConstantList) { }
+  logUser: {password: string, email: string} = {
+    password: '',
+    email: ''
+  };
+
+
+  constructor(private constantList: ConstantList,
+              private loginService: LoginService,
+              private routeLogin: Router,
+              private loggedStateService:  LoggedState
+  ) { }
 
   ngOnInit() {
     this.user = new UserModel({
@@ -21,10 +34,23 @@ export class LoginComponent implements OnInit {
 
   }
 
-  public onFormSubmit({ value, valid}: { value: UserModel, valid: boolean }) {
-    this.user = value;
-    console.log( this.user);
-    console.log("valid: " + valid);
+  completeLogin(result) {
+    sessionStorage.setItem('loggedUser', result.token);
+    this.loggedStateService.loggedState.next(true);
+    this.routeLogin.navigate(['settings']);
+  }
+
+  public onFormSubmit({ value}: { value: UserModel}) {
+
+    this.logUser = {
+      email: value.email,
+      password: value.password.pwd
+    };
+    this.loginService.loginUser(this.logUser).subscribe((res) => {
+      this.completeLogin(res);
+    }, Error => {
+      console.log('error', Error.error);
+    });
   }
 
 }

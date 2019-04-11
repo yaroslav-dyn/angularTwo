@@ -8,7 +8,7 @@ export class UserModel {
   terms: boolean;
 
   constructor(values: Object = {}) {
-    //Constructor initialization
+    // Constructor initialization
     Object.assign(this, values);
   }
 

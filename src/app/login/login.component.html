@@ -9,9 +9,9 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" ngModelGroup="password" #userPassword="ngModelGroup">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate" minlength="6" name="pwd" [ngModel]="" #userPassword = 'ngModel'
+          <input id="password" type="password" class="validate" minlength="6" name="pwd"
                  ngModel required>
           <label for="password">Password</label>
         </div>
@@ -31,31 +31,25 @@
         </div>
       </div>
     </form>
-
     <!--  Errors messages-->
     <div class="row">
       <div class="col s12 validate-errors">
-
         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="">
-          <div class="card-panel red lighten-1 white-text" *ngIf = "email.errors?.required">
+          <div class="card-panel red lighten-1 white-text" *ngIf="email.errors?.required">
             {{constantList.messages['emailCantBeBlank']}}
           </div>
-          <div class="card-panel red lighten-1 white-text" *ngIf = "email.errors?.pattern && email.touched">
+          <div class="card-panel red lighten-1 white-text" *ngIf="email.errors?.pattern && email.touched">
             {{constantList.messages['wrongEmailPattern']}}
           </div>
         </div>
 
-        <div *ngIf="(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)">
-
-          <div class="card-panel red lighten-1 white-text" *ngIf = "userPassword.invalid;">
-            {{constantList.messages['passwordLengthError']}}
-          </div>
+        <div class="card-panel red lighten-1 white-text" *ngIf="userPassword.invalid && userPassword.touched;">
+          {{constantList.messages['passwordLengthError']}}
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <!-- Modals -->
 <div id="termsModal" class="modal modal-fixed-footer">

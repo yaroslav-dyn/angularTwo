@@ -9,14 +9,15 @@
         </div>
       </div>
 
+        <!--TODO: return minLength for inputs to 6 after test -->
       <div class="row" ngModelGroup="password" #userPassword="ngModelGroup">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate" minlength="6" name="pwd"
+          <input id="password" type="password" class="validate" minlength="1" name="pwd"
                  ngModel required>
           <label for="password">Password</label>
         </div>
         <div class="input-field col s12">
-          <input id="password-repeat" type="password" class="validate" minlength="6" name="confirmPwd"
+          <input id="password-repeat" type="password" class="validate" minlength="1" name="confirmPwd"
                  ngModel required>
           <label for="password-repeat">Confirm Password</label>
         </div>
@@ -72,20 +73,6 @@
     </div>
   </div>
 </div>
-
-
-<!-- Modals -->
-<!--<div id="termsModal" class="modal modal-fixed-footer">-->
-<!--  <div class="modal-content">-->
-<!--    <h4>Modal Header</h4>-->
-<!--    <p>A bunch of text</p>-->
-<!--  </div>-->
-<!--  <div class="modal-footer">-->
-<!--    <button class="modal-close waves-effect waves-green btn-flat" (click)="user.terms = false">Disagree</button>-->
-<!--    <button class="modal-close waves-effect waves-green btn-flat" (click)="user.terms = true">Agree</button>-->
-<!--  </div>-->
-<!--</div>-->
-
 
 
 

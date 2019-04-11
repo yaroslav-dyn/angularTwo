@@ -10,18 +10,22 @@ const httpOptions = {
 
 
 @Injectable()
-export class RegisterService {
+export class LoginService {
   _baseUrl: string;
 
   constructor(private httpClient: HttpClient, private constantList: ConstantList) {
   }
 
-
-  registerUser(user) {
+  loginUser(user) {
     this._baseUrl = this.constantList.project.baseUrl;
-    return this.httpClient.post(this._baseUrl + 'register', user, httpOptions);
+    return this.httpClient.post(this._baseUrl + 'login', user, httpOptions);
 
   }
+
+  checkLogin() {
+    return sessionStorage.getItem('loggedUser') !== null;
+  }
+
 }
 
 
