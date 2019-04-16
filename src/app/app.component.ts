@@ -5,6 +5,9 @@ import {ConstantList} from './constants';
 import {LoginService} from './services/login.service';
 import {LoggedState} from './services/loggedUser';
 import {Router} from '@angular/router';
+import {LoaderState} from './loader/loader.model';
+import {LoaderService} from './services/preload.service';
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -17,12 +20,15 @@ export class AppComponent implements OnInit {
     defaultTheme = 'defaultTheme';
     showTheme: boolean | string;
     loginUser: boolean;
-    constructor(private settingsService: SettingsService,
+  requestInProgress = false;
+  private subscription: Subscription;
+  constructor(private settingsService: SettingsService,
                 private constantList: ConstantList,
                 private loginService: LoginService,
                 private loggedStateService: LoggedState,
-                private rootRouter: Router
-    ) { }
+                private rootRouter: Router,
+                private loaderService: LoaderService
+    ) {}
     ngOnInit() {
         this.currentTheme = this.defaultTheme;
         this.settingsService.myData.subscribe(colorTheme => {
@@ -35,13 +41,18 @@ export class AppComponent implements OnInit {
         this.currentTheme = localStorage.getItem('currentTheme');
       }
 
-      this.loginUser = this.loginService.checkLogin();
 
-      this.loggedStateService.loggedState.subscribe(loggedStatus => {
-        if ( loggedStatus ) {
-          this.loginUser = loggedStatus;
-        }
-      });
+
+
+      this.subscription = this.loaderService.loaderState
+        .subscribe((state: LoaderState) => {
+          this.requestInProgress = state.show;
+        });
+
+        this.loggedStateService.loggedState.subscribe( loggState => {
+            this.loginUser = loggState;
+        });
+        this.loginUser = this.loginService.checkLogin();
     }
     setTheme(e) {
         this.currentTheme = e;

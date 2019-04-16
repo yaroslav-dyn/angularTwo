@@ -1,0 +1,33 @@
+<div class="container content-padding">
+  <div class="row">
+
+    <div class="input-field col s12 m2">
+
+      <div class="profile_ava">
+        <img class="responsive-img circle" [src]="currentUser.avatar"
+             [alt]="currentUser.first_name  +' '+ currentUser.last_name">
+      </div>
+    </div>
+
+    <div class="col s12 m10">
+      <mz-input-container>
+        <input mz-input
+               [label]="'First name'"
+               [value]="currentUser.first_name"
+               id="first-name"
+               type="text">
+      </mz-input-container>
+
+      <mz-input-container>
+        <input mz-input
+               [label]="'Last name'"
+               [value]="currentUser.last_name"
+               id="last-name"
+               type="text">
+      </mz-input-container>
+
+    </div>
+
+
+  </div>
+</div>

@@ -1,26 +1,28 @@
-<div class="row">
+<div class="container">
+  <div class="row">
     <div class="input-field col s6">
-        <input id="search-name" type="text" class="validate" [(ngModel)]="searchStr">
-        <label class="active" for="search-name">Search Name</label>
+      <input id="search-name" type="text" class="validate" [(ngModel)]="searchStr">
+      <label class="active" for="search-name">Search Name</label>
     </div>
-</div>
+  </div>
 
 
-<div class="col s12 m6 l3" *ngFor="let user of users | search:searchStr; let i = index">
+  <div class="col s12 m6 l3" *ngFor="let user of users | search:searchStr; let i = index">
     <div class="card" appHover>
-        <div class="card-image">
-            <img style="min-height: 100px">
-            <!-- src="{{user.image}}" -->
-            <span class="card-title" [ngClass]="{'marked': isMarked }">{{user.name}}</span>
-        </div>
-        <div class="card-content">
-            <p>
-              {{user.geo}}
-            </p>
-        </div>
-        <div class="card-action">
-          <a class="waves-effect waves-light btn" [routerLink]="['/personal', i]">Sign</a>
-            <!--(click)="onClickCart()-->
-        </div>
+      <div class="card-image">
+        <img style="min-height: 100px">
+        <!-- src="{{user.image}}" -->
+        <span class="card-title" [ngClass]="{'marked': isMarked }">{{user.name}}</span>
+      </div>
+      <div class="card-content">
+        <p>
+          {{user.geo}}
+        </p>
+      </div>
+      <div class="card-action">
+        <a class="waves-effect waves-light btn" [routerLink]="['/personal', i]">Sign</a>
+        <!--(click)="onClickCart()-->
+      </div>
     </div>
+  </div>
 </div>

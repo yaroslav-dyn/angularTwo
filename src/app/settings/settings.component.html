@@ -1,63 +1,63 @@
-<section class="set-section">
-  <div class="row">
-    <div class="input-field col s12">
-      <input id="count-users" type="text" class="validate" [(ngModel)]="countUsers">
-      <label class="active" for="count-users">Number of users</label>
-    </div>
-
-    <a class="waves-effect waves-light btn" (click)="onChNumbersUsers()">Change</a>
-
-
-  </div>
-</section>
-
-
-<section class="set-section">
-    <p>
-      <label>
-      <input type="checkbox" name="trigger-theme" class=""  [checked]="themeView" (change)="outputMethodSettings($event);"  id="trigger-theme"/>
-      <span>Color theme in header</span>
-      </label>
-    </p>
-</section>
-
-
-<section class="set-section">
-  <div class="row">
-
-    <div class=" row tabs-container">
-
-      <div class="col s4 left-align">
-        <a (click)="tabView='First'" [class.active]="tabView=='First'" class="waves-effect waves-light btn-small btn">first</a>
-      </div>
-      <div class="col s4 center-align">
-        <a (click)="tabView='Second'" [class.active]="tabView=='Second'" class="waves-effect waves-light btn-small btn">Second</a>
-      </div>
-      <div class="col s4 right-align">
-        <a (click)="tabView='Third'" [class.active]="tabView=='Third'" class="waves-effect waves-light btn-small btn">Third</a>
-      </div>
-
-    </div>
+<div class="container content-padding">
+  <section class="set-section">
     <div class="row">
-      <div class="col s12">
-        <div class="tabs-view" [ngSwitch]="tabView">
-          <div *ngSwitchCase="'First'">First content
-            <span [textContent]="countUsers"></span>
+      <div class="input-field col s12">
+        <input id="count-users" type="text" class="validate" [(ngModel)]="countUsers">
+        <label class="active" for="count-users">Number of users</label>
+      </div>
+
+      <a class="waves-effect waves-light btn" (click)="onChNumbersUsers()">Change</a>
+
+    </div>
+  </section>
+
+
+  <section class="set-section">
+
+      <div>Color theme in header</div>
+      <br>
+      <mz-switch-container>
+
+        <input mz-switch
+               id="trigger-theme"
+               [checked]="themeView"
+               (change)="outputMethodSettings($event);"
+               [off]="'Off'"
+               [on]="'On'"
+               type="checkbox">
+      </mz-switch-container>
+
+  </section>
+
+  <section class="set-section">
+    <div class="row">
+
+      <div class=" row tabs-container">
+
+        <div class="col s4 left-align">
+          <a (click)="tabView='First'" [class.active]="tabView=='First'" class="waves-effect waves-light btn-small btn">first</a>
+        </div>
+        <div class="col s4 center-align">
+          <a (click)="tabView='Second'" [class.active]="tabView=='Second'"
+             class="waves-effect waves-light btn-small btn">Second</a>
+        </div>
+        <div class="col s4 right-align">
+          <a (click)="tabView='Third'" [class.active]="tabView=='Third'" class="waves-effect waves-light btn-small btn">Third</a>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <div class="tabs-view" [ngSwitch]="tabView">
+            <div *ngSwitchCase="'First'">First content
+              <span [textContent]="countUsers"></span>
+            </div>
+            <div *ngSwitchCase="'Second'">Second content</div>
+            <div *ngSwitchCase="'Third'">Third content</div>
+            <div *ngSwitchDefault>Choose</div>
           </div>
-          <div *ngSwitchCase="'Second'">Second content</div>
-          <div *ngSwitchCase="'Third'">Third content</div>
-          <div *ngSwitchDefault>Choose</div>
         </div>
       </div>
-
     </div>
-
-  </div>
-</section>
-
-
-<section>
-  <app-settings-user #childSettingsComponent></app-settings-user>
-  <button class="waves-effect waves-light btn-small btn" (click)="childSettingsComponent.checkChild()">Method from child</button>
-</section>
-
+  </section>
+</div>

@@ -6,7 +6,7 @@ import {
   MzModalModule,
   MzCheckboxModule,
   MzSidenavModule,
-  MzToastModule
+  MzToastModule, MzCardModule, MzSwitchModule
 } from 'ngx-materialize';
 
 
@@ -18,7 +18,9 @@ import {
     MzModalModule,
     MzCheckboxModule,
     MzSidenavModule,
-    MzToastModule
+    MzToastModule,
+    MzCardModule,
+    MzSwitchModule
   ],
   exports: [
     MzButtonModule,
@@ -26,7 +28,9 @@ import {
     MzModalModule,
     MzCheckboxModule,
     MzSidenavModule,
-    MzToastModule
+    MzToastModule,
+    MzCardModule,
+    MzSwitchModule
   ]
 })
 export class MatterModule { }

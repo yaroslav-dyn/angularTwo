@@ -4,10 +4,26 @@ $default-color: #ee6e73;
 $purple-color: #bb4c7e;
 $black-color: #444;
 $invert-white: #f6f6f6;
+$dark-panels: #676767;
+
+
+@mixin Gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+  background: -webkit-linear-gradient(top, $start-color, $end-color);
+  background: linear-gradient(to bottom, $start-color, $end-color);
+}
+
 
 html, body {
     height: 100%;
 }
+
+//decrease heading's font size
+@for $i from 1 through 4 {
+  h#{$i}{ font-size: 4.2rem - ($i * 0.64rem)!important; }
+}
+
+
 
 .theme-trigger-container {
   padding: 9px 0;
@@ -18,7 +34,9 @@ select[name=theme-trigger-nav] {
   @media(min-width: 992px){
     margin-left: 20px;
   }
-
+  .side-nav & {
+    color: #444;
+  }
 }
 .side-nav {
   .sidenav-header {
@@ -38,7 +56,13 @@ select[name=theme-trigger-nav] {
   }
 }
 
-
+.defaultTheme {
+  .bb-landing-hero {
+    @include Gradient(#ee6e73, #ee6e73, #b74141);
+    border-bottom: 1px solid #fb5c62;
+    -webkit-box-shadow: inset 0 -2px 2px -2px rgba(232, 23, 31, 0.8);
+  }
+}
 .purpleTheme {
   nav {
     background-color: $purple-color;
@@ -55,6 +79,11 @@ select[name=theme-trigger-nav] {
       .brand-logo {
       }
     }
+  }
+  .bb-landing-hero {
+    @include Gradient(#BB4C7F, #864949, #BB4C7F);
+    border-bottom: 1px solid #BB4C7F;
+    -webkit-box-shadow: inset 0 -2px 2px -2px rgba(232, 23, 31, 0.8);
   }
 
 }
@@ -74,7 +103,7 @@ select[name=theme-trigger-nav] {
         }
     }
     .btn {
-        background-color: #676767;
+        background-color: $dark-panels;
     }
     &#app-wrapper {
         background-color: $black-color;
@@ -109,7 +138,14 @@ select[name=theme-trigger-nav] {
       color: $black-color;
     }
   }
-
+  .card {
+    background-color: $dark-panels;
+  }
+  .bb-landing-hero {
+    @include Gradient($dark-panels, $black-color, $dark-panels);
+    border-bottom: 1px solid $black-color;
+    -webkit-box-shadow: inset 0 -2px 2px -2px rgba(0, 0, 0, 0.8);
+  }
 }
 
 .btn-mobile-large {
@@ -120,3 +156,11 @@ select[name=theme-trigger-nav] {
 .not-found-page ~ .row {
   background-color: #ee6e73;
 }
+
+
+.content-padding {
+  padding-top: 30px;
+}
+
+
+

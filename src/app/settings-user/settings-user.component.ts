@@ -6,13 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings-user.component.scss']
 })
 export class SettingsUserComponent implements OnInit {
-
-  childVar: string = 'Child String';
-
-  checkChild() {
-    console.log('Child method');
-  }
-
   constructor() { }
 
   ngOnInit() {

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   completeLogin(result) {
     sessionStorage.setItem('loggedUser', result.token);
     this.loggedStateService.loggedState.next(true);
-    this.routeLogin.navigate(['settings']);
+    this.routeLogin.navigate(['profile']);
   }
 
   public onFormSubmit({ value}: { value: UserModel}) {
