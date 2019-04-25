@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {UserModel} from './User.model';
-import {ConstantList} from '../constants';
 import {RegisterService} from '../services/register.service';
-import {MzToastService} from 'ngx-materialize';
 import { Router } from '@angular/router';
+import {ToasterService} from '../services/toaster.service';
+import {ConstantList} from '../constants';
+
 
 @Component({
   selector: 'app-registration',
@@ -20,9 +21,9 @@ export class RegistrationComponent implements OnInit {
     };
 
   constructor(
-    private constantList: ConstantList,
     private registerService: RegisterService,
-    private toastService: MzToastService,
+    private toastService: ToasterService,
+    private constantList: ConstantList,
     private routeReg: Router) {
 
   }
@@ -46,13 +47,10 @@ export class RegistrationComponent implements OnInit {
       password: value.password.pwd
     };
 
-    const Messages: any = this.constantList.messages;
 
     this.registerService.registerUser(this.regUser).subscribe((res) => {
-
           this.completeRegister(res);
-          this.toastService.show(Messages['haveBeenRegister'] + ' ' + this.constantList.project.name, 60000, 'bb-toast success');
-
+          this.toastService.showToast('haveBeenRegister ' + this.constantList.project.name, 'success');
     }, Error => {
       console.log('error', Error.error);
     });

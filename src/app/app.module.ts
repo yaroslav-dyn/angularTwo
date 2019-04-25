@@ -29,8 +29,9 @@ import {LoggedState} from './services/loggedUser';
 import { ProfileComponent } from './profile/profile.component';
 import { LoaderService } from './services/preload.service';
 import {LoaderInterceptorService} from './services/preload-interceptor.service';
-import { LoaderComponent } from './loader/loader.component';
+import { LoaderComponent } from './content-components/loader/loader.component';
 import { ApiUsersInfoComponent } from './content-components/api-users-info/api-users-info.component';
+import {ToasterService} from "./services/toaster.service";
 
 
 const routes = [
@@ -89,7 +90,7 @@ const routes = [
   bootstrap: [AppComponent],
   providers: [
     SettingsService, UsersService, ConstantList, RegisterService, LoginService,
-    LoginGuard, LoggedState, LoaderService,  LoaderInterceptorService,
+    LoginGuard, LoggedState, LoaderService,  LoaderInterceptorService, ToasterService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptorService,

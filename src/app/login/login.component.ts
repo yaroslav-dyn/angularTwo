@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
       this.completeLogin(res);
     }, Error => {
       console.log('error', Error.error);
+      console.log(Error.error.message, `Backend returned code ${Error.status}, body was: ${Error.error}`);
     });
   }
 

@@ -5,7 +5,7 @@ import {ConstantList} from './constants';
 import {LoginService} from './services/login.service';
 import {LoggedState} from './services/loggedUser';
 import {Router} from '@angular/router';
-import {LoaderState} from './loader/loader.model';
+import {LoaderState} from './content-components/loader/loader.model';
 import {LoaderService} from './services/preload.service';
 import {Subscription} from "rxjs";
 
