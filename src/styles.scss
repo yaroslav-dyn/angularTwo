@@ -58,16 +58,28 @@ select[name=theme-trigger-nav] {
 }
 
 .defaultTheme {
-  .bb-landing-hero {
-    @include Gradient(#ee6e73, #ee6e73, #b74141);
-    border-bottom: 1px solid #fb5c62;
-    -webkit-box-shadow: inset 0 -2px 2px -2px rgba(232, 23, 31, 0.8);
+  .bb-landing {
+    &-hero {
+      @include Gradient(#ee6e73, #ee6e73, #b74141);
+      border-bottom: 1px solid #fb5c62;
+      -webkit-box-shadow: inset 0 -2px 2px -2px rgba(232, 23, 31, 0.8);
+    }
+
+    &-card {
+      background-color: #fafafa;
+    }
   }
   .tabs-container {
     .active {
       background-color: $default-color;
     }
   }
+  .color-section-odd {
+    @include Gradient(#ee6e73, #ee6e73, #b74141);
+    border-bottom: 1px solid #fb5c62;
+    -webkit-box-shadow: inset 0 -2px 2px -2px rgba(232, 23, 31, 0.8);
+  }
+  //#fafafa
 }
 .purpleTheme {
   nav {
