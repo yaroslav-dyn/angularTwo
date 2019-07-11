@@ -101,7 +101,7 @@ select[name=theme-trigger-nav] {
       }
     }
   }
-  .bb-landing-hero {
+  .bb-landing-hero, .color-section-odd {
     @include Gradient(#BB4C7F, #864949, #BB4C7F);
     border-bottom: 1px solid #BB4C7F;
     -webkit-box-shadow: inset 0 -2px 2px -2px rgba(232, 23, 31, 0.8);
@@ -182,7 +182,7 @@ select[name=theme-trigger-nav] {
     background-color: $dark-panels;
   }
 
-  .bb-landing-hero {
+  .bb-landing-hero, .color-section-odd {
     @include Gradient($dark-panels, $black-color, $dark-panels);
     border-bottom: 1px solid $black-color;
     -webkit-box-shadow: inset 0 -2px 2px -2px rgba(0, 0, 0, 0.8);
