@@ -12,9 +12,7 @@ export class HomePageComponent implements OnInit {
 
   constructor() {}
   ngOnInit() {
-
     interface UserObj { name: string; secondName: string; nickName?: string; }
-
     let userObj: UserObj = {
       name: 'User',
       secondName: 'Super',

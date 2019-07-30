@@ -31,7 +31,11 @@ import { LoaderService } from './services/preload.service';
 import {LoaderInterceptorService} from './services/preload-interceptor.service';
 import { LoaderComponent } from './content-components/loader/loader.component';
 import { ApiUsersInfoComponent } from './content-components/api-users-info/api-users-info.component';
-import {ToasterService} from "./services/toaster.service";
+import {ToasterService} from './services/toaster.service';
+import {ChartsJsModule} from './charts.module';
+import { LandingLineChartComponent } from './landing-line-chart/landing-line-chart.component';
+
+
 
 
 const routes = [
@@ -77,7 +81,8 @@ const routes = [
       NotFoundComponent,
       ProfileComponent,
       LoaderComponent,
-      ApiUsersInfoComponent
+      ApiUsersInfoComponent,
+      LandingLineChartComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +90,8 @@ const routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    MatterModule
+    MatterModule,
+    ChartsJsModule
   ],
   bootstrap: [AppComponent],
   providers: [
