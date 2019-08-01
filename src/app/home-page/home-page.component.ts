@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-
-
-
-
+  tabView: String = 'linear';
   constructor() {}
   ngOnInit() {
     interface UserObj { name: string; secondName: string; nickName?: string; }
@@ -18,8 +15,6 @@ export class HomePageComponent implements OnInit {
       secondName: 'Super',
       nickName: 'superUser'
     };
-
-
   }
 }
 
