@@ -3,14 +3,21 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-landing-line-chart',
-  templateUrl: './landing-line-chart.component.html',
-  styleUrls: ['./landing-line-chart.component.scss']
+  styleUrls: ['./landing-line-chart.component.scss'],
+  template: `<div>
+              <app-linear-chart
+                  [chartHeading]="landingChartHeading"
+                  [chartOptions]="lineChartOptions"
+                  [datasets]="linearDataSets"
+                  [labels]="lineChartLabels">
+              </app-linear-chart>
+            </div>`
 })
 export class LandingLineChartComponent implements OnInit {
 
     public landingChartHeading: String =  'Landing Linear chart';
     public linearDataSets: ChartDataSets[] = [
-     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series: A', backgroundColor: '#36a2eb'}
+     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series: A', backgroundColor: '#36a2eb', pointBackgroundColor: '#ff1744', pointRadius: 6}
     ];
     public lineChartOptions: any = {
       legend: {

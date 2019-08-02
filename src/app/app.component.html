@@ -3,7 +3,6 @@
         <div class="nav-container">
             <a routerLink="/" class="brand-logo">{{constantList.project.name}}</a>
             <a href="#" id="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
             <ul id="nav" class="right hide-on-med-and-down">
                 <li *ngIf="!loginUser" routerLinkActive="active"><a routerLink="/signIn">Login</a></li>
                 <li *ngIf="loginUser" routerLinkActive="active"><a routerLink="/settings">Settings</a></li>
@@ -20,6 +19,7 @@
                     </div>
                 </li>
               <ng-template #otherSwitch><li></li></ng-template>
+
             </ul>
         </div>
     </nav>
@@ -54,9 +54,7 @@
       </div>
     </mz-sidenav-link>
   </mz-sidenav>
-
   <app-loader></app-loader>
-
   <div class="app-content" [hidden]="requestInProgress">
       <router-outlet></router-outlet>
     </div>

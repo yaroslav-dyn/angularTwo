@@ -35,6 +35,7 @@ import {ToasterService} from './services/toaster.service';
 import {ChartsJsModule} from './charts.module';
 import { LandingLineChartComponent } from './landing-line-chart/landing-line-chart.component';
 import { BarChartLandingComponent } from './landing-bar-chart/bar-chart-landing.component';
+import { LandingPieChartComponent } from './landing-pie-chart/landing-pie-chart.component';
 
 
 
@@ -84,7 +85,8 @@ const routes = [
       LoaderComponent,
       ApiUsersInfoComponent,
       LandingLineChartComponent,
-      BarChartLandingComponent
+      BarChartLandingComponent,
+      LandingPieChartComponent
   ],
   imports: [
     BrowserModule,
