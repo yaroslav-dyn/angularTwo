@@ -200,6 +200,13 @@ select[name=theme-trigger-nav] {
 }
 
 
+.color-section-odd {
+  .bb-landing-odd-content {
+    > * {
+      color: #fff;
+    }
+  }
+}
 
 .btn-mobile-large {
   width: 100%;

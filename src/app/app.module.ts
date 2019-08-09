@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { HoverDirective } from './hover.directive';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SearchPipe} from './search.pipe';
 import { HomePageComponent } from './home-page/home-page.component';
 import {RouterModule} from '@angular/router';
@@ -95,7 +95,8 @@ const routes = [
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MatterModule,
-    ChartsJsModule
+    ChartsJsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
   providers: [

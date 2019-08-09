@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Chart } from 'chart.js';
+import {ChartsDataService} from '../../services/charts-data.service';
 
 @Component({
   selector: 'app-linear-chart',
@@ -7,27 +8,20 @@ import { Chart } from 'chart.js';
                 <h4>{{ chartHeading }}</h4>
             </div>
             <div>
-                <canvas id="lineChartEl">{{ chart }}</canvas>
+                <canvas id='lineChartEl' >{{ chart }}</canvas>
             </div>`,
   styleUrls: ['./linear-chart.component.scss']
 })
 export class LinearChartComponent implements OnInit {
-
     private chart;
+    @Input() chartRef;
     @Input() datasets;
     @Input() labels;
     @Input() chartHeading;
     @Input() chartOptions;
-  constructor() { }
+  constructor(private chartsDataService: ChartsDataService) { }
   ngOnInit() {
-    this.chart = new Chart('lineChartEl', {
-      type: 'line',
-      data: {
-        labels: this.labels,
-        datasets: this.datasets
-      },
-      options: this.chartOptions
-    });
+    this.chart = this.chartsDataService.getChartData(this.chartRef, this.datasets, this.labels, this.chartOptions);
   }
 
 }

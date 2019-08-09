@@ -7,7 +7,7 @@ import {LoggedState} from './services/loggedUser';
 import {Router} from '@angular/router';
 import {LoaderState} from './content-components/loader/loader.model';
 import {LoaderService} from './services/preload.service';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
 
 @Component({

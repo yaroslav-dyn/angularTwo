@@ -32,10 +32,8 @@
         <div class="col s12">
           <div class="tabs-view" [ngSwitch]="tabView">
             <div *ngSwitchCase="'First'">
-
               <section class="set-section">
-
-                <div>Color theme in header</div>
+                <h4>Color theme in header</h4>
                 <br>
                 <mz-switch-container>
                   <input mz-switch
@@ -46,9 +44,34 @@
                          [on]="'On'"
                          type="checkbox">
                 </mz-switch-container>
-
               </section>
-
+              <hr>
+              <section class="set-section">
+                  <h4>Default Charts type</h4>
+                  <br>
+                <form [formGroup]="chartTypeSettings">
+                  <div class="row">
+                    <div class="col">
+                      <label>
+                        <input class="with-gap" formControlName="chartType" type="radio" value="line" />
+                        <span>Line</span>
+                      </label>
+                    </div>
+                    <div class="col">
+                      <label>
+                        <input class="with-gap" formControlName="chartType" type="radio" value="bar" />
+                        <span>Bar</span>
+                      </label>
+                    </div>
+                    <div class="col">
+                      <label>
+                        <input class="with-gap" formControlName="chartType" type="radio" value="pie" />
+                        <span>Pie</span>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </section>
             </div>
             <div *ngSwitchCase="'Second'">Second content</div>
             <div *ngSwitchCase="'Third'">Third content</div>

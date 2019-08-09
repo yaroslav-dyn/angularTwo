@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import {UsersService} from '../users.service';
 import {SettingsService} from '../services/settings.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
@@ -14,6 +15,9 @@ export class SettingsComponent implements OnInit {
     tabView: string;
     themeView: boolean | string;
 
+  chartTypeSettings = new FormGroup({
+    chartType: new FormControl('line'),
+      });
 
   constructor(private usersService: UsersService,
               private settingsService: SettingsService) { }
@@ -24,7 +28,14 @@ export class SettingsComponent implements OnInit {
     this.usersService.setSize(this.countUsers);
     this.countUsers = this.usersService.size;
     this.tabView = 'First';
+    this.settingsOnChanges();
+  }
 
+
+  settingsOnChanges() {
+    this.chartTypeSettings.valueChanges.subscribe( val => {
+      this.settingsService.updateSettings(val);
+    });
   }
 
   onChNumbersUsers() {

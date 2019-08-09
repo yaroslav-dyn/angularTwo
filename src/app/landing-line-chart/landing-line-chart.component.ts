@@ -6,6 +6,7 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
   styleUrls: ['./landing-line-chart.component.scss'],
   template: `<div>
               <app-linear-chart
+                  [chartRef]="landingChartRef"
                   [chartHeading]="landingChartHeading"
                   [chartOptions]="lineChartOptions"
                   [datasets]="linearDataSets"
@@ -16,6 +17,7 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
 export class LandingLineChartComponent implements OnInit {
 
     public landingChartHeading: String =  'Landing Linear chart';
+    public landingChartRef: String = 'lineChartEl';
     public linearDataSets: ChartDataSets[] = [
      {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series: A', backgroundColor: '#36a2eb', pointBackgroundColor: '#ff1744', pointRadius: 6}
     ];
