@@ -152,6 +152,10 @@ select[name=theme-trigger-nav] {
   select[name=theme-trigger-nav] {
     color: $black-color;
   }
+  select[name=theme-trigger-settings] {
+    background-color: transparent;
+    color: #fff;
+  }
 
   .sidenav-trigger {
     i {

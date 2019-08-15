@@ -33,13 +33,12 @@
           <div class="tabs-view" [ngSwitch]="tabView">
             <div *ngSwitchCase="'First'">
               <section class="set-section">
-                <h4>Color theme in header</h4>
-                <br>
+                <h5>Color theme in header</h5>
                 <mz-switch-container>
                   <input mz-switch
                          id="trigger-theme"
                          [checked]="themeView"
-                         (change)="outputMethodSettings($event);"
+                         (change)="outputMethodSettings($event, 'themeViewType');"
                          [off]="'Off'"
                          [on]="'On'"
                          type="checkbox">
@@ -47,9 +46,22 @@
               </section>
               <hr>
               <section class="set-section">
-                  <h4>Default Charts type</h4>
-                  <br>
-                <form [formGroup]="chartTypeSettings">
+                <h5>Default color theme</h5>
+
+                <div class="theme-trigger-container">
+                  <select class="browser-default" name="theme-trigger-settings" id="theme-trigger-nav" [(ngModel)]="currentThemeModel" (ngModelChange)="outputMethodSettings($event, 'themeType');">
+                    <option value="" disabled selected>Choose your theme</option>
+                    <option value="defaultTheme">Default</option>
+                    <option value="purpleTheme">Purple</option>
+                    <option value="blackTheme">Dark</option>
+                  </select>
+                </div>
+
+              </section>
+              <hr>
+              <section class="set-section">
+                  <h5>Default Charts type</h5>
+                <form [formGroup]="chartTypeSettings" (change)="outputMethodSettings($event, 'chartTypeType');">
                   <div class="row">
                     <div class="col">
                       <label>

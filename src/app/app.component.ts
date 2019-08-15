@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UsersService} from './users.service';
-import {SettingsService} from './services/settings.service';
+import {AppSettingsInt, SettingsService} from './services/settings.service';
 import {ConstantList} from './constants';
 import {LoginService} from './services/login.service';
 import {LoggedState} from './services/loggedUser';
@@ -11,60 +11,67 @@ import {Subscription} from 'rxjs';
 
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    currentTheme: string;
-    defaultTheme = 'defaultTheme';
-    showTheme: boolean | string;
-    loginUser: boolean;
+  defaultTheme = 'defaultTheme';
+  currentTheme: string = this.defaultTheme;
+  showTheme: boolean | string = true;
+  loginUser: boolean;
   requestInProgress = false;
+  settings: AppSettingsInt;
   private subscription: Subscription;
-  constructor(private settingsService: SettingsService,
-                private constantList: ConstantList,
-                private loginService: LoginService,
-                private loggedStateService: LoggedState,
-                private rootRouter: Router,
-                private loaderService: LoaderService
-    ) {}
-    ngOnInit() {
-        this.currentTheme = this.defaultTheme;
-        this.settingsService.myData.subscribe(colorTheme => {
-          this.showTheme = colorTheme;
-        });
 
-      if ( localStorage ) {
-        const storageThemeVal = JSON.parse(localStorage.getItem('themeState'));
-        if ( storageThemeVal ) { this.showTheme = storageThemeVal; }
-        this.currentTheme = localStorage.getItem('currentTheme');
+  constructor(private settingsService: SettingsService,
+              private constantList: ConstantList,
+              private loginService: LoginService,
+              private loggedStateService: LoggedState,
+              private rootRouter: Router,
+              private loaderService: LoaderService
+  ) {
+  }
+
+  ngOnInit() {
+    // this.currentTheme = this.defaultTheme;
+
+    this.settingsService.getSettings().subscribe(settings => {
+      this.settings = settings;
+      this.currentTheme = this.settings.currentTheme;
+      this.showTheme = this.settings.themeState;
+    });
+
+    this.settingsService.updateSettings.subscribe(settings => {
+      if (settings) {
+        this.showTheme = settings.themeState;
+        this.currentTheme = settings.currentTheme;
       }
 
+    });
 
+    this.subscription = this.loaderService.loaderState
+      .subscribe((state: LoaderState) => {
+        this.requestInProgress = state.show;
+      });
 
+    this.loggedStateService.loggedState.subscribe(loggState => {
+      this.loginUser = loggState;
+    });
+    this.loginUser = this.loginService.checkLogin();
 
-      this.subscription = this.loaderService.loaderState
-        .subscribe((state: LoaderState) => {
-          this.requestInProgress = state.show;
-        });
+  }
 
-        this.loggedStateService.loggedState.subscribe( loggState => {
-            this.loginUser = loggState;
-        });
-        this.loginUser = this.loginService.checkLogin();
-    }
-    setTheme(e) {
-        this.currentTheme = e;
-      if (localStorage) {
-            localStorage.setItem('currentTheme', this.currentTheme);
-        }
-    }
-    loggedOut () {
-      sessionStorage.removeItem('loggedUser');
-      this.loginUser = false;
-      this.rootRouter.navigate(['/signIn']);
-    }
+  setTheme(e) {
+    this.settings.currentTheme = this.currentTheme;
+    this.settingsService.updateSettings.next(this.settings);
+  }
+
+  loggedOut() {
+    sessionStorage.removeItem('loggedUser');
+    this.loginUser = false;
+    this.rootRouter.navigate(['/signIn']);
+  }
 }
 
 

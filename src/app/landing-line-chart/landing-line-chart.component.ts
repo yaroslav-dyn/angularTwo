@@ -25,6 +25,16 @@ export class LandingLineChartComponent implements OnInit {
       legend: {
         display: true
       },
+      tooltips: {
+        backgroundColor: '#fff',
+        titleFontFamily: 'Roboto, sans-serif',
+        cornerRadius: 6,
+        bodyFontColor: '#444',
+        titleFontColor: '#444',
+        displayColors: false,
+        borderWidth: 1
+
+      },
       scales: {
         xAxes: [{
           display: true

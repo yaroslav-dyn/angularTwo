@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import {UsersService} from '../users.service';
-import {SettingsService} from '../services/settings.service';
+import {AppSettingsInt, SettingsService} from '../services/settings.service';
 import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
@@ -9,45 +9,59 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-
-
-    countUsers: number;
     tabView: string;
-    themeView: boolean | string;
+    themeView: boolean;
+    currentThemeModel: string;
+    objSet: AppSettingsInt = {
+      currentTheme: 'defaultTheme',
+      themeState: true,
+      chartType: 'Line'
+    };
 
   chartTypeSettings = new FormGroup({
     chartType: new FormControl('line'),
-      });
+  });
 
   constructor(private usersService: UsersService,
               private settingsService: SettingsService) { }
 
   ngOnInit() {
-
-    this.themeView = JSON.parse(localStorage.getItem('themeState'));
-    this.usersService.setSize(this.countUsers);
-    this.countUsers = this.usersService.size;
     this.tabView = 'First';
-    this.settingsOnChanges();
-  }
 
-
-  settingsOnChanges() {
-    this.chartTypeSettings.valueChanges.subscribe( val => {
-      this.settingsService.updateSettings(val);
+    this.settingsService.getSettings().subscribe( settings => {
+      this.patchSettings(settings);
+    });
+    this.settingsService.updateSettings.subscribe(settings => {
+      if (settings) {
+        this.patchSettings(settings);
+      }
     });
   }
 
-  onChNumbersUsers() {
-    this.usersService.setSize(this.countUsers);
+  patchSettings(setObj) {
+    console.log('patch obj', setObj);
+    this.themeView = setObj.themeState;
+    this.currentThemeModel = setObj.currentTheme;
+    this.chartTypeSettings.patchValue({
+      chartType: setObj.chartType
+    });
+    console.log(this.chartTypeSettings);
   }
 
-  outputMethodSettings(e) {
-    this.themeView = e.target.checked;
-    this.settingsService.myData.next(this.themeView);
-    if (localStorage) {
-      localStorage.setItem('themeState', this.themeView.toString() );
+  outputMethodSettings(e, type): void {
+    switch (type) {
+      case 'themeViewType':
+        this.objSet.themeState = e.target.checked;
+        break;
+      case 'chartTypeType':
+        this.objSet.chartType = this.chartTypeSettings.value.chartType;
+        break;
+      case 'themeType':
+        this.objSet.currentTheme = this.currentThemeModel;
     }
+     this.settingsService.updateSettings.next(this.objSet);
+    this.settingsService.saveSettings(this.objSet);
+
   }
 
 }

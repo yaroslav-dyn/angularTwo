@@ -1,29 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import {SettingsService} from '../services/settings.service';
+import {SettingsService, AppSettingsInt} from '../services/settings.service';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
+
+
+export class HomePageComponent implements OnInit  {
   tabView: String;
   tabViewDefault: String = 'linear';
+  settings: AppSettingsInt;
+
   constructor(private settingsService: SettingsService) {}
   ngOnInit() {
-    interface UserObj { name: string; secondName: string; nickName?: string; }
-    let userObj: UserObj = {
-      name: 'User',
-      secondName: 'Super',
-      nickName: 'superUser'
-    };
+
 
     this.tabView = this.tabViewDefault;
 
-    this.settingsService.myData.subscribe(chartType => {
-
-      chartType ? this.tabView = chartType : this.tabView = this.tabViewDefault;
+    this.settingsService.getSettings().subscribe(settings => {
+      this.settings = settings;
+      this.tabView = this.settings.chartType;
     });
+
+    // this.settingsService.updateSettings.subscribe(settings => {
+    //   this.settings = settings;
+    // });
 
   }
 }

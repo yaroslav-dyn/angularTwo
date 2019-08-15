@@ -36,6 +36,8 @@ import {ChartsJsModule} from './charts.module';
 import { LandingLineChartComponent } from './landing-line-chart/landing-line-chart.component';
 import { BarChartLandingComponent } from './landing-bar-chart/bar-chart-landing.component';
 import { LandingPieChartComponent } from './landing-pie-chart/landing-pie-chart.component';
+import {CurrencySpacedPipe} from './currency.spaced.pipe';
+import { FooterComponent } from './content-components/footer/footer.component';
 
 
 
@@ -72,6 +74,7 @@ const routes = [
       HoverDirective,
       SearchPipe,
       userIdPipe,
+      CurrencySpacedPipe,
       HomePageComponent,
       SettingsComponent,
       PersonalComponent,
@@ -86,7 +89,8 @@ const routes = [
       ApiUsersInfoComponent,
       LandingLineChartComponent,
       BarChartLandingComponent,
-      LandingPieChartComponent
+      LandingPieChartComponent,
+      FooterComponent
   ],
   imports: [
     BrowserModule,

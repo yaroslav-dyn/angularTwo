@@ -18,12 +18,7 @@ export class LoginService {
   }
 
   loginUser(user) {
-    //TODO: test user for this API
-    user = {
-      email: 'eve.holt@reqres.in',
-      password: 'cityslicka'
-    };
-
+    user = this.constantList.loginUser;
     this._baseUrl = this.constantList.project.baseUrl;
     return this.httpClient.post(this._baseUrl + 'login', user, httpOptions);
 
