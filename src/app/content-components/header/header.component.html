@@ -1,0 +1,57 @@
+<nav class="nav-wrapper">
+  <div class="nav-container">
+    <a routerLink="/" class="brand-logo">{{constantList.project.name}}</a>
+    <a href="#" id="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul id="nav" class="right hide-on-med-and-down">
+      <li *ngIf="!loginUser" routerLinkActive="active"><a routerLink="/signIn">Login</a></li>
+      <li *ngIf="loginUser" routerLinkActive="active"><a routerLink="/settings">Settings</a></li>
+      <li *ngIf="loginUser" routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
+      <li *ngIf="loginUser" routerLinkActive="active"><a (click)="loggedOut()">Logout</a></li>
+      <li *ngIf="showTheme; else otherSwitch">
+        <div class="theme-trigger-container">
+          <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav" [(ngModel)]="currentTheme"
+                  (ngModelChange)="setTheme($event)">
+            <option value="" disabled selected>Choose your theme</option>
+            <option value="defaultTheme">Default</option>
+            <option value="purpleTheme">Purple</option>
+            <option value="blackTheme">Dark</option>
+          </select>
+        </div>
+      </li>
+      <ng-template #otherSwitch>
+        <li></li>
+      </ng-template>
+    </ul>
+  </div>
+</nav>
+
+<mz-sidenav
+  [id]="'bb-mobile-menu'"
+  [collapseButtonId]="'mobile-menu'">
+  <mz-sidenav-header>
+    <a routerLink="/" class="brand-logo">{{constantList.project.name}}</a>
+  </mz-sidenav-header>
+  <mz-sidenav-link>
+    <a *ngIf="!loginUser" routerLink="/signUp">Registration</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a *ngIf="loginUser" routerLink="/settings">Settings</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a *ngIf="loginUser" routerLink="/profile">Profile</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a (click)="loggedOut()">Logout</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <div class="theme-trigger-container" *ngIf="showTheme">
+      <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav-mob" [(ngModel)]="currentTheme"
+              (ngModelChange)="setTheme($event)">
+        <option value="" disabled selected>Choose your theme</option>
+        <option value="defaultTheme">Default</option>
+        <option value="purpleTheme">Purple</option>
+        <option value="blackTheme">Dark</option>
+      </select>
+    </div>
+  </mz-sidenav-link>
+</mz-sidenav>

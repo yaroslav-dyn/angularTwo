@@ -1,32 +1,26 @@
 <footer class="app-footer">
-  <div class="container">
+  <div class="container app-footer-content">
     <div class="row">
-      <div class="col m3">
-        {{constantList.project.name}}
+      <div class="col m4 center-align">
+
       </div>
-      <div class="col m6"></div>
-      <div class="col m3">
-        <nav class="nav-wrapper">
-          <div class="nav-container">
-            <ul id="nav" class="right hide-on-med-and-down">
-              <li *ngIf="!loginUser" routerLinkActive="active"><a routerLink="/signIn">Login</a></li>
-              <li *ngIf="loginUser" routerLinkActive="active"><a routerLink="/settings">Settings</a></li>
-              <li *ngIf="loginUser" routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
-              <li *ngIf="loginUser" routerLinkActive="active"><a (click)="loggedOut()">Logout</a></li>
-              <li *ngIf="showTheme; else otherSwitch">
-                <div class="theme-trigger-container">
-                  <select class="browser-default" name="theme-trigger-nav" id="theme-trigger-nav" [(ngModel)]="currentTheme" (ngModelChange)="setTheme($event)">
-                    <option value="" disabled selected>Choose your theme</option>
-                    <option value="defaultTheme">Default</option>
-                    <option value="purpleTheme">Purple</option>
-                    <option value="blackTheme">Dark</option>
-                  </select>
-                </div>
-              </li>
-              <ng-template #otherSwitch><li></li></ng-template>
+      <div class="col m4 center-align">
+        <div class="company-info">
+          Company Info
+        </div>
+        <div class="company-copyright">
+          <small>@{{constantList.project.name}} copyright</small>
+        </div>
+      </div>
+      <div class="col m4">
+        <div class="footer-links">
+          <ul id="nav" class="navigation center-align">
+            <li *ngIf="!loginUser" routerLinkActive="active"><a routerLink="/signIn">Login</a></li>
+            <li *ngIf="loginUser" routerLinkActive="active"><a routerLink="/settings">Settings</a></li>
+            <li *ngIf="loginUser" routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
+            <li *ngIf="loginUser" routerLinkActive="active"><a (click)="loggedOut()">Logout</a></li>
             </ul>
-          </div>
-        </nav>
+        </div>
       </div>
     </div>
   </div>

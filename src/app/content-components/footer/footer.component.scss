@@ -1,0 +1,22 @@
+@import '../../scss/Variables';
+
+.app-footer {
+  min-height: $footerHeight;
+  margin-top: - $footerHeight;
+  .navigation {
+    li {
+      display: inline-block;
+      margin-right: 1rem;
+      &:last-child {
+        margin-right: 0;
+      }
+      &.active {
+        a {
+          color: #864949;
+        }
+      }
+    }
+  }
+}
+
+
